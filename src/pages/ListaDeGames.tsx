@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { useState, useEffect } from "react";
 import { useParams } from 'react-router-dom';
 import {
@@ -17,36 +16,47 @@ interface Game {
   postion: number;
 }
 
+interface Lists {
+  id: number;
+  name: string;
+}
+
 export function ListaDeGames() {
-  const [list, setList] = useState<Game[]>([]);
-  list.sort((a, b) => a.postion - b.postion);
-  const [itemList, setItemList] = useState(list);
+  const [lists, setLists] = useState<Lists>({
+    id: 0,
+    name: ""
+  })
+  const [gamesByList, setGamesByList] = useState<Game[]>([]);
+  gamesByList.sort((a, b) => a.postion - b.postion);
+  const [gamesBySortedList, setGamesBySortedList] = useState(gamesByList);
   const { listId } = useParams();
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     fetch(`http://localhost:8080/lists/${listId}/games`)
       .then((res) => res.json())
-      .then((data: Game[]) => setList(data))
+      .then((data: Game[]) => setGamesByList(data))
       .catch((err) => console.error(err));
-  }, []);
+  }, [listId]);
 
   useEffect(() => {
-    setItemList(list);
-  }, [list]);
+    fetch(`http://localhost:8080/lists/${listId}`)
+      .then((res) => res.json())
+      .then((data: Lists) => setLists(data))
+      .catch((err) => console.error(err));
+  }, [listId]);
+
+  useEffect(() => {
+    setGamesBySortedList(gamesByList);
+  }, [gamesByList]);
 
   const handleDrop = (droppedItem: DropResult) => {
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
     if (!droppedItem.destination) return;
 
     const data = {
-      // eslint-disable-next-line
       sourceIndex: droppedItem.source.index,
-      // eslint-disable-next-line
       destinationIndex: droppedItem.destination.index,
     };
 
-    // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
     const response = fetch(`http://localhost:8080/lists/${listId}/replacement`, {
       method: "POST",
       headers: {
@@ -58,31 +68,29 @@ export function ListaDeGames() {
     //  VERIFICANDO SE O REQUEST ESTA OK
     // console.log(response);
 
-    const updatedList = [...itemList];
-    // eslint-disable-next-line
+    const updatedList = [...gamesBySortedList];
     const [reorderedItem] = updatedList.splice(droppedItem.source.index, 1);
-    // eslint-disable-next-line 
     updatedList.splice(droppedItem.destination.index, 0, reorderedItem);
-    setItemList(updatedList);
+    setGamesBySortedList(updatedList);
   };
 
   // VERIFICANDO SE OS ESTADOS ESTAO OK
-  // console.log(list);
+  // console.log(gamesByList);
   // console.log("_______________________");
-  // console.log(itemList);
+  // console.log(gamesBySortedList);
 
   return (
     <div className="App">
+      <h1>{lists?.name}</h1>
       <DragDropContext onDragEnd={handleDrop}>
         <Droppable droppableId="list-container">
           {(provided) => (
             <div
               className="list-container"
               {...provided.droppableProps}
-              // eslint-disable-next-line 
               ref={provided.innerRef}
             >
-              {itemList.map((item, index) => (
+              {gamesBySortedList.map((item, index) => (
                 <Draggable
                   key={item.id}
                   draggableId={item.id.toString()}
@@ -93,7 +101,6 @@ export function ListaDeGames() {
                       className="item-container"
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
-                      // eslint-disable-next-line
                       ref={provided.innerRef}
                     >
                       {item.title}
