@@ -65,7 +65,7 @@ export function ListaDeGames() {
       body: JSON.stringify(data),
     });
 
-    //  VERIFICANDO SE O REQUEST ESTA OK
+    //  REQUEST OK?
     // console.log(response);
 
     const updatedList = [...gamesBySortedList];
@@ -74,7 +74,7 @@ export function ListaDeGames() {
     setGamesBySortedList(updatedList);
   };
 
-  // VERIFICANDO SE OS ESTADOS ESTAO OK
+  // STATE OK?
   // console.log(gamesByList);
   // console.log("_______________________");
   // console.log(gamesBySortedList);
@@ -97,14 +97,15 @@ export function ListaDeGames() {
                   index={index}
                 >
                   {(provided) => (
-                    <div
-                      className="item-container"
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      ref={provided.innerRef}
-                    >
-                      {item.title}
-                    </div>
+                    <a href={`http://localhost:5173/lists/${listId}/games/${item.id}`}> <div
+                    className="item-container"
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                    ref={provided.innerRef}
+                  >
+                    {item.title}
+                  </div></a>
+                   
                   )}
                 </Draggable>
               ))}
