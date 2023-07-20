@@ -13,7 +13,6 @@ export function Router() {
             <Route path="/lists/:listId/games" element={<ListaDeGames/>}></Route>
             <Route path="/lists/:listId/games/:gameId" element={<Game/>}></Route>
             </Route>
-           
         </Routes>
     )
 }
