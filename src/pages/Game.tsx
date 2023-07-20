@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { GameContainer } from "./Game.styles";
+import sekiroImage from "../../public/images/sekiro.jpg"
+import starImage from "../..//public/images/starImage.svg" 
+import starImageYellow from "../..//public/images/starImageYellow.svg" 
 
 interface Game {
-    id: number,
-    title: string,
-    year: number,
-    genre: string,
-    platforms: string,
-    score: number,
-    imgUrl: string,
-    shortDescription: string,
-    longDescription: string
-
-
+  id: number;
+  title: string;
+  year: number;
+  genre: string;
+  platforms: string;
+  score: number;
+  imgUrl: string;
+  shortDescription: string;
+  longDescription: string;
 }
 
 export function Game() {
@@ -29,16 +31,26 @@ export function Game() {
   console.log(gameData);
 
   return (
-    <div>
-      <p>{gameData?.id}</p>
-      <p>{gameData?.title}</p>
-      <p>{gameData?.year}</p>
-      <p>{gameData?.genre}</p>
-      <p>{gameData?.platforms}</p>
-      <p>{gameData?.score}</p>
-      <p>{gameData?.imgUrl}</p>
-      <p>{gameData?.shortDescription}</p>
+    <GameContainer>
+      <div>
+      <div className="gameDetailsContainer">
+        <img src={sekiroImage} alt="" />
+        <div className="details">
+          <span>{gameData?.year}</span>
+          <h2>{gameData?.title}</h2>
+          <p><strong>Genre</strong>: {gameData?.genre}</p>
+          <p><strong>Platforms</strong>: {gameData?.platforms}</p>
+          <div className="starsContainer">
+          {(gameData?.score ?? 0) > 0 ? (<img src={starImageYellow} className="starDefault"/>) : (<img src={starImage} className="starDefault"/>)}
+          {(gameData?.score ?? 0) > 1 ? (<img src={starImageYellow} className="starDefault"/>) : (<img src={starImage} className="starDefault"/>)}
+          {(gameData?.score ?? 0) > 2 ? (<img src={starImageYellow} className="starDefault"/>) : (<img src={starImage} className="starDefault"/>)}
+          {(gameData?.score ?? 0) > 3 ? (<img src={starImageYellow} className="starDefault"/>) : (<img src={starImage} className="starDefault"/>)}
+          {(gameData?.score ?? 0) > 4 ? (<img src={starImageYellow} className="starDefault"/>) : (<img src={starImage} className="starDefault"/>)}
+          </div>
+        </div>
+      </div>
       <p>{gameData?.longDescription}</p>
-    </div>
+      </div>
+    </GameContainer>
   );
 }
