@@ -39,7 +39,7 @@ word-break: break-all;
     }
 
     h1, p {
-    color: var(--gray-300);
+    color: var(--gray-100);
     }
 
     h1 {
