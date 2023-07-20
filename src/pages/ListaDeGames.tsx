@@ -105,7 +105,6 @@ export function ListaDeGames() {
                   >
                     {item.title}
                   </div></a>
-                   
                   )}
                 </Draggable>
               ))}
