@@ -34,18 +34,18 @@ export function Game() {
     <GameContainer>
       <div>
       <div className="gameDetailsContainer">
-        <img src={sekiroImage} alt="" />
+        <img src={gameData?.imgUrl} alt="" />
         <div className="details">
           <span>{gameData?.year}</span>
           <h2>{gameData?.title}</h2>
           <p><strong>Genre</strong>: {gameData?.genre}</p>
           <p><strong>Platforms</strong>: {gameData?.platforms}</p>
           <div className="starsContainer">
-          {(gameData?.score ?? 0) > 0 ? (<img src={starImageYellow} className="starDefault"/>) : (<img src={starImage} className="starDefault"/>)}
-          {(gameData?.score ?? 0) > 1 ? (<img src={starImageYellow} className="starDefault"/>) : (<img src={starImage} className="starDefault"/>)}
-          {(gameData?.score ?? 0) > 2 ? (<img src={starImageYellow} className="starDefault"/>) : (<img src={starImage} className="starDefault"/>)}
-          {(gameData?.score ?? 0) > 3 ? (<img src={starImageYellow} className="starDefault"/>) : (<img src={starImage} className="starDefault"/>)}
-          {(gameData?.score ?? 0) > 4 ? (<img src={starImageYellow} className="starDefault"/>) : (<img src={starImage} className="starDefault"/>)}
+          {(gameData?.score ?? 0) > 0 ? (<img src={starImageYellow} />) : (<img src={starImage} />)}
+          {(gameData?.score ?? 0) > 1 ? (<img src={starImageYellow} />) : (<img src={starImage} />)}
+          {(gameData?.score ?? 0) > 2 ? (<img src={starImageYellow} />) : (<img src={starImage} />)}
+          {(gameData?.score ?? 0) > 3 ? (<img src={starImageYellow} />) : (<img src={starImage} />)}
+          {(gameData?.score ?? 0) > 4 ? (<img src={starImageYellow} />) : (<img src={starImage} />)}
           </div>
         </div>
       </div>

@@ -27,7 +27,7 @@ export const GameContainer = styled.main`
         gap: 10px;
 
         img {
-            height: 200px;
+            height: 280px;
         }
 
         .details {
@@ -38,11 +38,13 @@ export const GameContainer = styled.main`
 
             h2 {
                 margin-bottom: 25px;
+                font-size: 35px;
             }
 
             p {
+                font-size: 18px;
                 strong {
-                    color: var(--blue-600);
+                color: var(--blue-600);
                 font-weight: 700;
                 }
             }
@@ -59,6 +61,8 @@ export const GameContainer = styled.main`
                     height: 15px;
                     width: 15px;
                     fill: #FFF;
+                    height: 20px;
+                    width: 20px;
                 }
             }
         }

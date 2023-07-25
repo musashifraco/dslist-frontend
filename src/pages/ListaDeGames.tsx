@@ -70,19 +70,11 @@ export function ListaDeGames() {
       }
     );
 
-    //  REQUEST OK?
-    // console.log(response);
-
     const updatedList = [...gamesBySortedList];
     const [reorderedItem] = updatedList.splice(droppedItem.source.index, 1);
     updatedList.splice(droppedItem.destination.index, 0, reorderedItem);
     setGamesBySortedList(updatedList);
   };
-
-  // STATE OK?
-  // console.log(gamesByList);
-  // console.log("_______________________");
-  // console.log(gamesBySortedList);
 
   return (
     <GameListContainer>
@@ -113,7 +105,7 @@ export function ListaDeGames() {
                           {...provided.dragHandleProps}
                           ref={provided.innerRef}
                         >
-                          <img src={sekiroImage} alt="" />
+                          <img src={item.imgUrl} alt="" />
                           <div>
                             <h3>{item.title}</h3>
                             <p>{item.shortDescription}</p>

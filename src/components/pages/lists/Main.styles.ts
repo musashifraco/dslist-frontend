@@ -30,6 +30,10 @@ export const ListContainer = styled.main`
         color: var(--blue-600);
         font-weight: 700;
         font-size: 20px;
+
+        &:hover {
+            color: var(--blue-600-hover);
+        }
     }
 `
 

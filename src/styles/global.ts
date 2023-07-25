@@ -15,7 +15,10 @@ export const GlobalStyle = createGlobalStyle`
     --gray-100: #FFFF;
     --gray-300: #C2CAE8;
     --gray-600: #8789C0;
-    --blue-400: #3DA5D9;
+
+    --blue-400-hover: #5DA5A9;
+    --blue-400: #3DA5A9;
+    --blue-600-hover: #5964AA;
     --blue-600: #2364AA;
     --blue-900: #111D4A;
 }

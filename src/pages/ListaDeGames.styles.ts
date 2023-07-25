@@ -33,6 +33,8 @@ export const GameCard = styled.div`
   display: flex;
   height: 100px;
   color: black;
+  transition: 0.3s;
+
   img {
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
@@ -62,5 +64,9 @@ export const GameCard = styled.div`
         font-weight: 700;
         color: var(--blue-600);
     }
+  }
+
+  &:hover {
+    transform: scale(1.05);
   }
 `;

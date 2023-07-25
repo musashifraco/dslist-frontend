@@ -12,7 +12,7 @@ export const IntroMain = styled.main`
 
   img {
     position: absolute;
-    right: 300px;
+    right: 5vw;
 
     height: 550px;
   }
@@ -24,7 +24,7 @@ export const TextContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-direction: column;
-  transform: translateX(60%);
+  transform: translateX(25%);
 
   height: 550px;
   width: 450px;
@@ -63,6 +63,10 @@ export const TextContainer = styled.div`
     border-radius: 10px;
 
     background-color: var(--blue-400);
+
+    &:hover {
+      background-color: var(--blue-400-hover);
+    }
   }
 
   button {

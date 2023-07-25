@@ -10,7 +10,7 @@ padding: 0px 40px;
 
 background-color: var(--blue-900);
 
-    > h1 {
+    > a {
         color: var(--gray-100);
     }
 
